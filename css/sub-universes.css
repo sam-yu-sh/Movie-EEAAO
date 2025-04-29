@@ -1,0 +1,81 @@
+.sub-universe-dots {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sub-universe-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #fff 70%, #f8faff 100%);
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: 0 0 10px 3px #fff, 0 0 18px 6px #fff;
+  transition: all 0.3s ease;
+  animation: dotPulse 2s infinite;
+  z-index: 2;
+}
+
+.sub-universe-dot:hover {
+  transform: scale(1.3);
+  background: radial-gradient(circle, #fff 80%, #fff 100%);
+  box-shadow: 0 0 18px 6px #fff, 0 0 32px 12px #fff;
+}
+
+.sub-universe-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 8px 2px #fff;
+  opacity: 0.4;
+  animation: ripple 2s infinite;
+  z-index: 1;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.04;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.sub-universe-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(-100%);
+  margin-top: -10px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.sub-universe-dot:hover .sub-universe-tooltip {
+  opacity: 1;
+} 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEAAO Unlockable Universes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/sub-universes.css">
+</head>
+<body>
+  <div id="particles"></div>
+
+  <div id="orbit-ring">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" />
+    </svg>
+  </div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner bagel-spinner">
+      <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="27" cy="27" r="22" stroke="white" stroke-width="6" fill="none"/>
+        <ellipse cx="27" cy="27" rx="10" ry="10" fill="none" stroke="white" stroke-width="6"/>
+      </svg>
+    </div>
+    <div class="loading-text">Verse-Jumping</div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <section class="hero-title">
+      <div class="title animate-title">
+        Everything Everywhere<br>All at Once
+      </div>
+    </section>
+
+    <section id="scene1" class="full-screen">
+      <h2>Explore the Multiverse</h2>
+    </section>
+  </div>
+
+  <!-- Jump Condition Modal -->
+  <div id="jump-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:rgba(17,17,17,0.95); border-radius:18px; box-shadow:0 0 32px #7efcff88; padding:2.5rem 2rem; max-width:400px; margin:auto; text-align:center;">
+      <div id="jump-modal-question" style="font-size:1.2rem; color:#7efcff; margin-bottom:2rem;"></div>
+      <button id="jump-yes" style="font-size:1.1rem; font-weight:600; padding:0.7rem 2rem; border:none; border-radius:30px; background:linear-gradient(90deg,#7efcff,#ff78ff); color:#111; margin-right:1.2rem; cursor:pointer; box-shadow:0 0 18px 2px #7efcff44;">Yes</button>
+      <button id="jump-no" style="font-size:1.1rem; font-weight:600; padding:0.7rem 2rem; border:none; border-radius:30px; background:rgba(255,255,255,0.08); color:#fff; cursor:pointer;">No</button>
+    </div>
+  </div>
+
+  <div class="custom-loader" id="custom-loader" style="display:none;">
+    <div class="spinner bagel-spinner">
+      <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="27" cy="27" r="22" stroke="white" stroke-width="6" fill="none"/>
+        <ellipse cx="27" cy="27" rx="10" ry="10" fill="none" stroke="white" stroke-width="6"/>
+      </svg>
+    </div>
+    <div class="loading-text">Verse-Jumping</div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/sub-universes.js"></script>
+  <script>
+    document.querySelectorAll('.universe-point').forEach(point => {
+      point.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modal = document.getElementById('jump-modal');
+        const question = document.getElementById('jump-modal-question');
+        modal.style.display = 'flex';
+        question.textContent = this.getAttribute('data-jump');
+        
+        const yesBtn = document.getElementById('jump-yes');
+        const noBtn = document.getElementById('jump-no');
+        const targetUrl = this.getAttribute('data-target');
+        
+        yesBtn.onclick = () => { window.location.href = targetUrl; };
+        noBtn.onclick = () => { modal.style.display = 'none'; };
+      });
+    });
+  </script>
+</body>
+</html> 

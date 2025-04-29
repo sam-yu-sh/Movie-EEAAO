@@ -1,0 +1,215 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #eaeaea;
+  letter-spacing: 0.04em;
+  background: #111;
+  overflow: hidden;
+}
+
+.background {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: url('../images/1.avif') center center/cover no-repeat;
+  z-index: 0;
+  filter: brightness(0.4) blur(1px);
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 10, 10, 0.6);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  top: 12vh;
+  background: rgba(20, 20, 20, 0.35);
+  padding: 3rem 2.5rem 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+}
+
+.subtitle {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: #b0b0b0;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.paragraph {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #eaeaea;
+  text-align: left;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 12px #000a;
+  position: relative;
+  min-height: 120px;
+  transition: none;
+  perspective: 1200px;
+  will-change: transform, opacity;
+}
+
+.paragraph.ripple-out {
+  animation: rippleOut 0.6s forwards;
+}
+
+.paragraph.ripple-in {
+  animation: rippleIn 0.6s;
+}
+
+.paragraph.flip-out-next {
+  animation: flipOutNext 0.7s forwards;
+}
+.paragraph.flip-in-next {
+  animation: flipInNext 0.7s;
+}
+.paragraph.flip-out-prev {
+  animation: flipOutPrev 0.7s forwards;
+}
+.paragraph.flip-in-prev {
+  animation: flipInPrev 0.7s;
+}
+
+@keyframes rippleOut {
+  0% { opacity: 1; filter: blur(0); }
+  100% { opacity: 0; filter: blur(8px); }
+}
+
+@keyframes rippleIn {
+  0% { opacity: 0; filter: blur(8px); }
+  100% { opacity: 1; filter: blur(0); }
+}
+
+@keyframes flipOutNext {
+  0% { opacity: 1; transform: rotateY(0deg); }
+  100% { opacity: 0; transform: rotateY(-90deg); }
+}
+@keyframes flipInNext {
+  0% { opacity: 0; transform: rotateY(90deg); }
+  100% { opacity: 1; transform: rotateY(0deg); }
+}
+@keyframes flipOutPrev {
+  0% { opacity: 1; transform: rotateY(0deg); }
+  100% { opacity: 0; transform: rotateY(90deg); }
+}
+@keyframes flipInPrev {
+  0% { opacity: 0; transform: rotateY(-90deg); }
+  100% { opacity: 1; transform: rotateY(0deg); }
+}
+
+.footer {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  letter-spacing: 0.18em;
+  text-align: left;
+  opacity: 0.7;
+}
+
+.scroll-indicator {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 1.5rem;
+  letter-spacing: 0.15em;
+  user-select: none;
+}
+
+.page-counter {
+  position: fixed;
+  right: 2vw;
+  bottom: 2vh;
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  background: rgba(20, 20, 20, 0.55);
+  padding: 0.5em 1.1em;
+  border-radius: 2em;
+  letter-spacing: 0.15em;
+  z-index: 20;
+  box-shadow: 0 2px 12px #0006;
+  user-select: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.back-main-btn {
+  position: fixed;
+  left: 2vw;
+  bottom: 2vh;
+  width: 48px;
+  height: 48px;
+  background: rgba(30,30,30,0.7);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px #0006;
+  cursor: pointer;
+  z-index: 21;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+.back-main-btn svg {
+  display: block;
+}
+.back-main-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: scale(1.12);
+}
+
+.custom-loader {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.custom-loader .spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(255,255,255,0.18);
+  border-top: 5px solid #7efcff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+.custom-loader .loading-text {
+  color: #7efcff;
+  font-size: 1.3rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-shadow: 0 2px 12px #000a;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 700px) {
+  .content {
+    padding: 1.2rem 0.5rem;
+    max-width: 95vw;
+  }
+  .title { font-size: 1.3rem; }
+} 
